@@ -7,47 +7,17 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import { PROJECTS } from "@/constants/projects";
 
-type Project = {
-  slug: string;
-  name: string;
-  category: string;
-  description: string;
-  image: string;
-  video?: string;
-};
+const PROJECTS_PREVIEW = PROJECTS.slice(0, 3);
 
-const PROJECTS: Project[] = [
-  {
-    slug: "nimbus-health",
-    name: "Nimbus Health",
-    category: "Healthcare · Web Platform",
-    description:
-      "A patient-scheduling platform rebuilt for speed, serving 40,000+ appointments a month.",
-    image: "/images/work/nimbus-health.png",
-    video: "/videos/work/nimbus-health.mp4",
-  },
-  {
-    slug: "corvus-logistics",
-    name: "Corvus Logistics",
-    category: "Logistics · AI + Automation",
-    description:
-      "Route optimization powered by a custom model, cutting delivery time by 18%.",
-    image: "/images/work/corvus-logistics.png",
-    video: "/videos/work/corvus-logistics.mp4",
-  },
-  {
-    slug: "kestrel-robotics",
-    name: "Kestrel Robotics",
-    category: "Robotics · Enterprise Dashboard",
-    description:
-      "A real-time fleet monitoring console built for operators managing hundreds of units.",
-    image: "/images/work/kestrel-robotics.png",
-    video: "/videos/work/kestrel-robotics.mp4",
-  },
-];
-
-function ProjectCard({ project, index }: { project: Project; index: number }) {
+function ProjectCard({
+  project,
+  index,
+}: {
+  project: (typeof PROJECTS)[number];
+  index: number;
+}) {
   const [hovering, setHovering] = React.useState(false);
   const videoRef = React.useRef<HTMLVideoElement>(null);
 
@@ -134,7 +104,7 @@ export function Showcase() {
               Selected work
             </p>
             <h2 className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
-              Products we've shipped.
+              Products We&apos;ve shipped.
             </h2>
           </div>
           <Link
@@ -147,7 +117,7 @@ export function Showcase() {
         </div>
 
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-          {PROJECTS.map((project, i) => (
+          {PROJECTS_PREVIEW.map((project, i) => (
             <ProjectCard key={project.slug} project={project} index={i} />
           ))}
         </div>

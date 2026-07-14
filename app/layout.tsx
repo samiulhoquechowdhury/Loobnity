@@ -12,10 +12,7 @@ import { cn } from "@/lib/utils";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
-const SITE_URL = "https://loobnity.com";
-const SITE_NAME = "Loobnity";
-const SITE_DESCRIPTION =
-  "Loobnity designs and builds software, AI systems, and digital products for teams that refuse to ship anything ordinary.";
+import { SITE_URL, SITE_NAME, SITE_DESCRIPTION } from "@/constants/site";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
