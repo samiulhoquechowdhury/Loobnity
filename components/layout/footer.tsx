@@ -1,7 +1,7 @@
 // components/layout/footer.tsx
 
 import Link from "next/link";
-import { Github, Linkedin, Twitter } from "lucide-react";
+import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { NAV_LINKS } from "@/constants/nav-links";
 
 const FOOTER_COLUMNS = [
@@ -26,9 +26,9 @@ const FOOTER_COLUMNS = [
 ];
 
 const SOCIALS = [
-  { label: "GitHub", href: "https://github.com", Icon: Github },
-  { label: "LinkedIn", href: "https://linkedin.com", Icon: Linkedin },
-  { label: "Twitter", href: "https://twitter.com", Icon: Twitter },
+  { label: "GitHub", href: "https://github.com", Icon: FaGithub },
+  { label: "LinkedIn", href: "https://linkedin.com", Icon: FaLinkedin },
+  { label: "Twitter", href: "https://twitter.com", Icon: FaTwitter },
 ];
 
 export function Footer() {
@@ -101,7 +101,7 @@ export function Footer() {
                   aria-label={label}
                   className="text-secondary transition-colors hover:text-foreground"
                 >
-                  <Icon className="h-5 w-5" strokeWidth={1.5} />
+                  <Icon className="h-[18px] w-[18px]" />
                 </a>
               ))}
             </div>

@@ -12,13 +12,14 @@ import {
   SiPython,
   SiDocker,
   SiKubernetes,
-  SiAmazon,
   SiPostgresql,
   SiMongodb,
   SiRedis,
   SiGraphql,
-  SiOpenai,
 } from "react-icons/si";
+
+import { FaAws } from "react-icons/fa";
+import { AiFillOpenAI } from "react-icons/ai";
 import { Bot, Gem } from "lucide-react";
 
 const TECHNOLOGIES = [
@@ -30,12 +31,12 @@ const TECHNOLOGIES = [
   { name: "Python", Icon: SiPython },
   { name: "Docker", Icon: SiDocker },
   { name: "Kubernetes", Icon: SiKubernetes },
-  { name: "AWS", Icon: SiAmazon },
+  { name: "AWS", Icon: FaAws },
   { name: "PostgreSQL", Icon: SiPostgresql },
   { name: "MongoDB", Icon: SiMongodb },
   { name: "Redis", Icon: SiRedis },
   { name: "GraphQL", Icon: SiGraphql },
-  { name: "OpenAI", Icon: SiOpenai },
+  { name: "OpenAI", Icon: AiFillOpenAI },
   { name: "Claude", Icon: Bot },
   { name: "Gemini", Icon: Gem },
 ];
