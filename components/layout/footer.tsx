@@ -1,5 +1,6 @@
 // components/layout/footer.tsx
-
+import Image from "next/image";
+import loobnityLogo from "@/app/loobnity-logo.png";
 import Link from "next/link";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { NAV_LINKS } from "@/constants/nav-links";
@@ -39,9 +40,8 @@ export function Footer() {
       <div className="container-premium py-20">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-4">
           <div className="md:col-span-1">
-            <span className="text-lg font-semibold tracking-tight text-foreground">
-              Loobnity
-            </span>
+            <Image src={loobnityLogo} alt="Loobnity" className="h-6 w-auto" />
+
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-secondary">
               A software and AI engineering studio building products for teams
               that refuse to ship anything ordinary.

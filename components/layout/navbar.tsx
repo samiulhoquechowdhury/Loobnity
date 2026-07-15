@@ -2,6 +2,9 @@
 
 "use client";
 
+import Image from "next/image";
+import loobnityLogo from "@/app/loobnity-logo.png";
+
 import * as React from "react";
 import Link from "next/link";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
@@ -30,11 +33,13 @@ export function Navbar() {
         )}
       >
         <div className="container-premium flex h-16 items-center justify-between md:h-20">
-          <Link
-            href="/"
-            className="text-lg font-semibold tracking-tight text-foreground"
-          >
-            Loobnity
+          <Link href="/" className="flex items-center gap-2">
+            <Image
+              src={loobnityLogo}
+              alt="Loobnity"
+              className="h-7 w-auto"
+              priority
+            />
           </Link>
 
           <nav className="hidden items-center gap-8 md:flex">

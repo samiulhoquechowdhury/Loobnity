@@ -1,6 +1,8 @@
 // components/layout/mobile-menu.tsx
 
 "use client";
+import Image from "next/image";
+import loobnityLogo from "@/app/loobnity-logo.png";
 
 import * as React from "react";
 import Link from "next/link";
@@ -32,9 +34,8 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
           className="fixed inset-0 z-[60] bg-background md:hidden"
         >
           <div className="flex items-center justify-between px-6 pt-6">
-            <span className="text-lg font-semibold tracking-tight">
-              Loobnity
-            </span>
+            <Image src={loobnityLogo} alt="Loobnity" className="h-6 w-auto" />
+
             <button
               onClick={onClose}
               aria-label="Close menu"

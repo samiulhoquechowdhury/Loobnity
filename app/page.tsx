@@ -13,6 +13,8 @@ import { Testimonials } from "@/components/sections/testimonials";
 import { Pricing } from "@/components/sections/pricing";
 import { Faq } from "@/components/sections/faq";
 import { Cta } from "@/components/sections/cta";
+// app/page.tsx — add the import:
+import { ScrollStory } from "@/components/sections/scroll-story";
 
 export const metadata: Metadata = {
   title: "Loobnity — Building Software That Matters",
@@ -29,6 +31,7 @@ export default function HomePage() {
         <Hero />
         <Trusted />
         <Services />
+        <ScrollStory />
         <Process />
         <Showcase />
         <Technologies />
