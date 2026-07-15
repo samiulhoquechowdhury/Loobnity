@@ -35,7 +35,7 @@ const fadeUp = {
   }),
 };
 
-export function Team() {
+export default function Team() {
   return (
     <section className="bg-background py-28 md:py-36">
       <div className="container-premium">

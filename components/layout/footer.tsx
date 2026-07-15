@@ -1,6 +1,6 @@
 // components/layout/footer.tsx
 import Image from "next/image";
-import loobnityLogo from "@/app/loobnity-logo.png";
+import loobnityLogo from "@/app/icon.png";
 import Link from "next/link";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { NAV_LINKS } from "@/constants/nav-links";

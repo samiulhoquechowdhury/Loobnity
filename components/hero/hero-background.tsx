@@ -12,10 +12,25 @@ export function HeroBackground({ children }: { children: React.ReactNode }) {
   const springX = useSpring(mouseX, { stiffness: 40, damping: 20 });
   const springY = useSpring(mouseY, { stiffness: 40, damping: 20 });
 
+  // Separate, snappier spring for the spotlight so it feels responsive
+  // rather than laggy — the parallax dots stay slow/dreamy, the
+  // spotlight tracks closer to real-time like a cursor-aware UI would.
+  const spotlightX = useSpring(mouseX, { stiffness: 150, damping: 25 });
+  const spotlightY = useSpring(mouseY, { stiffness: 150, damping: 25 });
+
+  const [containerCenter, setContainerCenter] = React.useState({
+    x: 0,
+    y: 0,
+  });
+
   function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {
     const rect = e.currentTarget.getBoundingClientRect();
-    mouseX.set((e.clientX - rect.left - rect.width / 2) * 0.04);
-    mouseY.set((e.clientY - rect.top - rect.height / 2) * 0.04);
+    const relX = e.clientX - rect.left;
+    const relY = e.clientY - rect.top;
+
+    mouseX.set((relX - rect.width / 2) * 0.04);
+    mouseY.set((relY - rect.height / 2) * 0.04);
+    setContainerCenter({ x: relX, y: relY });
   }
 
   return (
@@ -24,6 +39,14 @@ export function HeroBackground({ children }: { children: React.ReactNode }) {
       className="bg-noise relative flex min-h-screen items-center overflow-hidden bg-background"
     >
       <HeroGrid />
+
+      {/* Cursor spotlight — brightens the grid near the pointer */}
+      <motion.div
+        className="pointer-events-none absolute inset-0 hidden md:block"
+        style={{
+          background: `radial-gradient(320px circle at ${containerCenter.x}px ${containerCenter.y}px, rgba(37,99,235,0.12), transparent 70%)`,
+        }}
+      />
 
       <motion.div
         style={{ x: springX, y: springY }}

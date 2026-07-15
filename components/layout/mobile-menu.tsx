@@ -2,7 +2,7 @@
 
 "use client";
 import Image from "next/image";
-import loobnityLogo from "@/app/loobnity-logo.png";
+import loobnityLogo from "@/app/icon.png";
 
 import * as React from "react";
 import Link from "next/link";
