@@ -40,7 +40,7 @@ export function Footer() {
       <div className="container-premium py-20">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-4">
           <div className="md:col-span-1">
-            <Image src={loobnityLogo} alt="Loobnity" className="h-6 w-auto" />
+            <Image src={loobnityLogo} alt="Loobnity" className="h-18 w-auto" />
 
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-secondary">
               A software and AI engineering studio building products for teams

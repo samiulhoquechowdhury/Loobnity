@@ -37,7 +37,7 @@ export function Navbar() {
             <Image
               src={loobnityLogo}
               alt="Loobnity"
-              className="h-7 w-auto"
+              className="h-18 w-auto"
               priority
             />
           </Link>

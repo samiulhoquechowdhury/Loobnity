@@ -34,7 +34,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
           className="fixed inset-0 z-[60] bg-background md:hidden"
         >
           <div className="flex items-center justify-between px-6 pt-6">
-            <Image src={loobnityLogo} alt="Loobnity" className="h-6 w-auto" />
+            <Image src={loobnityLogo} alt="Loobnity" className="h-18 w-auto" />
 
             <button
               onClick={onClose}
