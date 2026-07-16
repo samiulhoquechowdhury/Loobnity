@@ -1,13 +1,11 @@
 // app/loading.tsx
 
+import { LogoLoader } from "@/components/ui/logo-loader";
+
 export default function Loading() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="flex items-center gap-3">
-        <span className="h-2 w-2 animate-pulse rounded-full bg-accent [animation-delay:-0.3s]" />
-        <span className="h-2 w-2 animate-pulse rounded-full bg-accent [animation-delay:-0.15s]" />
-        <span className="h-2 w-2 animate-pulse rounded-full bg-accent" />
-      </div>
+      <LogoLoader />
     </div>
   );
 }

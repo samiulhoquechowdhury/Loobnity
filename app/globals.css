@@ -156,6 +156,45 @@
       animation: none;
     }
   }
+  /* add inside @layer utilities in app/globals.css */
+
+  @keyframes loader-glow {
+    0%,
+    100% {
+      opacity: 0.22;
+      filter: drop-shadow(0 0 0px rgba(37, 99, 235, 0));
+    }
+    35% {
+      opacity: 1;
+      filter: drop-shadow(0 0 10px rgba(37, 99, 235, 0.85));
+    }
+    70% {
+      opacity: 0.22;
+      filter: drop-shadow(0 0 0px rgba(37, 99, 235, 0));
+    }
+  }
+
+  .loader-piece {
+    color: var(--color-accent);
+    animation: loader-glow 2s ease-in-out infinite;
+  }
+
+  .loader-piece-1 {
+    animation-delay: 0s;
+  }
+  .loader-piece-2 {
+    animation-delay: 0.28s;
+  }
+  .loader-piece-3 {
+    animation-delay: 0.56s;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .loader-piece {
+      animation: none;
+      opacity: 0.8;
+    }
+  }
 }
 
 /* add inside @layer utilities in app/globals.css */

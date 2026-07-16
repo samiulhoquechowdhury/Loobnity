@@ -34,7 +34,6 @@ export default function HomePage() {
         <Services />
         <ScrollStory />
         <HorizontalShowcase />
-
         <Process />
         <Showcase />
         <Technologies />
