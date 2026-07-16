@@ -2,16 +2,15 @@
 
 "use client";
 
-import Image from "next/image";
-import loobnityLogo from "@/app/icon.png";
-
 import * as React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { Menu } from "lucide-react";
 import { NAV_LINKS, CTA_LINK } from "@/constants/nav-links";
 import { MobileMenu } from "@/components/layout/mobile-menu";
 import { cn } from "@/lib/utils";
+import loobnityLogo from "@/app/icon.png";
 
 export function Navbar() {
   const [scrolled, setScrolled] = React.useState(false);
@@ -21,6 +20,12 @@ export function Navbar() {
   useMotionValueEvent(scrollY, "change", (latest) => {
     setScrolled(latest > 24);
   });
+
+  function openCommandPalette() {
+    document.dispatchEvent(
+      new KeyboardEvent("keydown", { key: "k", metaKey: true })
+    );
+  }
 
   return (
     <>
@@ -37,7 +42,7 @@ export function Navbar() {
             <Image
               src={loobnityLogo}
               alt="Loobnity"
-              className="h-18 w-auto"
+              className="h-7 w-auto"
               priority
             />
           </Link>
@@ -54,7 +59,17 @@ export function Navbar() {
             ))}
           </nav>
 
-          <div className="hidden md:block">
+          <div className="hidden items-center gap-3 md:flex">
+            <button
+              onClick={openCommandPalette}
+              className="flex items-center gap-2 rounded-md border border-border px-3 py-1.5 text-xs text-secondary transition-colors hover:text-foreground"
+            >
+              <span>Search</span>
+              <kbd className="rounded border border-border bg-background px-1.5 py-0.5 font-mono text-[10px]">
+                ⌘K
+              </kbd>
+            </button>
+
             <Link
               href={CTA_LINK.href}
               className="rounded-md bg-accent px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-accent-hover"

@@ -13,6 +13,8 @@ import { cn } from "@/lib/utils";
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
 import { SITE_URL, SITE_NAME, SITE_DESCRIPTION } from "@/constants/site";
+import { CustomCursor } from "@/components/cursor/custom-cursor";
+import { CommandPalette } from "@/components/command-palette/command-palette";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -100,7 +102,10 @@ export default function RootLayout({
           forcedTheme="dark"
           disableTransitionOnChange
         >
-          <SmoothScrollProvider>{children}</SmoothScrollProvider>
+          <SmoothScrollProvider>
+            <CommandPalette />
+            {children}
+          </SmoothScrollProvider>
         </ThemeProvider>
       </body>
     </html>

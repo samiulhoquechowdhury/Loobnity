@@ -2,12 +2,14 @@
 
 "use client";
 
+import { GlitchHeading } from "@/components/hero/glitch-heading";
 import * as React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Activity } from "lucide-react";
 import { HeroBackground } from "@/components/hero/hero-background";
 import { TypingCode } from "@/components/hero/typing-code";
+// add this import at the top:
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -47,17 +49,18 @@ export function Hero() {
             Available for new projects
           </motion.span>
 
-          <motion.h1
+          <motion.div
             custom={1}
             variants={fadeUp}
             initial="hidden"
             animate="show"
-            className="text-5xl font-semibold leading-[1.05] tracking-tight text-foreground sm:text-6xl lg:text-7xl"
           >
-            Building software
-            <br />
-            that matters.
-          </motion.h1>
+            <GlitchHeading className="text-5xl font-semibold leading-[1.05] tracking-tight text-foreground sm:text-6xl lg:text-7xl">
+              Building software
+              <br />
+              that matters.
+            </GlitchHeading>
+          </motion.div>
 
           <motion.p
             custom={2}
