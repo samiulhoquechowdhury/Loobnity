@@ -6,20 +6,36 @@ import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
-import { Menu } from "lucide-react";
+import { ChevronDown, Menu } from "lucide-react";
 import { NAV_LINKS, CTA_LINK } from "@/constants/nav-links";
 import { MobileMenu } from "@/components/layout/mobile-menu";
+import { NavDropdown } from "@/components/layout/nav-dropdown";
 import { cn } from "@/lib/utils";
 import loobnityLogo from "@/app/icon.png";
+
+const CLOSE_DELAY_MS = 150;
 
 export function Navbar() {
   const [scrolled, setScrolled] = React.useState(false);
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [openItem, setOpenItem] = React.useState<string | null>(null);
+  const closeTimeout = React.useRef<ReturnType<typeof setTimeout> | null>(null);
+
   const { scrollY } = useScroll();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setScrolled(latest > 24);
   });
+
+  function openDropdown(label: string) {
+    if (closeTimeout.current) clearTimeout(closeTimeout.current);
+    setOpenItem(label);
+  }
+
+  function scheduleClose() {
+    if (closeTimeout.current) clearTimeout(closeTimeout.current);
+    closeTimeout.current = setTimeout(() => setOpenItem(null), CLOSE_DELAY_MS);
+  }
 
   function openCommandPalette() {
     document.dispatchEvent(
@@ -47,15 +63,38 @@ export function Navbar() {
             />
           </Link>
 
-          <nav className="hidden items-center gap-8 md:flex">
+          <nav className="hidden items-center gap-1 md:flex">
             {NAV_LINKS.map((link) => (
-              <Link
+              <div
                 key={link.href}
-                href={link.href}
-                className="text-sm text-secondary transition-colors hover:text-foreground"
+                className="relative"
+                onMouseEnter={() => link.dropdown && openDropdown(link.label)}
+                onMouseLeave={() => link.dropdown && scheduleClose()}
               >
-                {link.label}
-              </Link>
+                <Link
+                  href={link.href}
+                  className="flex items-center gap-1 rounded-md px-3 py-2 text-sm text-secondary transition-colors hover:text-foreground"
+                >
+                  {link.label}
+                  {link.dropdown && (
+                    <ChevronDown
+                      className={cn(
+                        "h-3.5 w-3.5 transition-transform duration-200",
+                        openItem === link.label && "rotate-180"
+                      )}
+                      strokeWidth={1.5}
+                    />
+                  )}
+                </Link>
+
+                {link.dropdown && (
+                  <NavDropdown
+                    groups={link.dropdown}
+                    open={openItem === link.label}
+                    onItemClick={() => setOpenItem(null)}
+                  />
+                )}
+              </div>
             ))}
           </nav>
 
