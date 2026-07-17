@@ -195,6 +195,24 @@
       opacity: 0.8;
     }
   }
+  /* add inside @layer utilities in app/globals.css */
+
+  @keyframes diagram-dash {
+    to {
+      stroke-dashoffset: -22;
+    }
+  }
+
+  .diagram-flow {
+    animation: diagram-dash 1s linear infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .diagram-flow {
+      animation: none;
+      opacity: 0 !important;
+    }
+  }
 }
 
 /* add inside @layer utilities in app/globals.css */
