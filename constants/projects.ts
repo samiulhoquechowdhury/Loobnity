@@ -19,7 +19,7 @@ export const PROJECTS: Project[] = [
     description:
       "A patient-scheduling platform rebuilt for speed, serving 40,000+ appointments a month.",
     image: "/images/work/nimbus-health.png",
-    video: "/videos/work/nimbus-health.mp4",
+    // video: "/videos/work/nimbus-health.mp4",
   },
   {
     slug: "corvus-logistics",
@@ -29,7 +29,7 @@ export const PROJECTS: Project[] = [
     description:
       "Route optimization powered by a custom model, cutting delivery time by 18%.",
     image: "/images/work/corvus-logistics.png",
-    video: "/videos/work/corvus-logistics.mp4",
+    // video: "/videos/work/corvus-logistics.mp4",
   },
   {
     slug: "kestrel-robotics",
@@ -39,7 +39,7 @@ export const PROJECTS: Project[] = [
     description:
       "A real-time fleet monitoring console built for operators managing hundreds of units.",
     image: "/images/work/kestrel-robotics.png",
-    video: "/videos/work/kestrel-robotics.mp4",
+    // video: "/videos/work/kestrel-robotics.mp4",
   },
   {
     slug: "bramble-retail",

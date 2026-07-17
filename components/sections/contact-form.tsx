@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { motion } from "framer-motion";
-import { Loader2, CheckCircle2 } from "lucide-react";
+import { Loader2, CheckCircle2, AlertCircle } from "lucide-react";
 
 const contactSchema = z.object({
   name: z.string().min(2, "Enter your full name"),
@@ -26,15 +26,27 @@ export function ContactForm() {
     register,
     handleSubmit,
     reset,
+    setError,
     formState: { errors, isSubmitting, isSubmitSuccessful },
   } = useForm<ContactFormValues>({
     resolver: zodResolver(contactSchema),
   });
 
   async function onSubmit(values: ContactFormValues) {
-    // TODO: wire to a real endpoint (API route, form service, or CRM).
-    await new Promise((resolve) => setTimeout(resolve, 900));
-    console.log(values);
+    const response = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(values),
+    });
+
+    if (!response.ok) {
+      setError("root", {
+        message:
+          "Something went wrong sending your message. Please try again or email us directly.",
+      });
+      return;
+    }
+
     reset();
   }
 
@@ -63,6 +75,13 @@ export function ContactForm() {
       noValidate
       className="rounded-lg border border-border bg-card p-8"
     >
+      {errors.root && (
+        <div className="mb-5 flex items-start gap-2.5 rounded-md border border-red-500/30 bg-red-500/10 p-3.5 text-sm text-red-400">
+          <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" strokeWidth={1.5} />
+          {errors.root.message}
+        </div>
+      )}
+
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor="name" className="mb-2 block text-sm text-secondary">

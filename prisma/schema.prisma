@@ -1,0 +1,63 @@
+// prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  // SQLite for local dev only — swap to postgresql + a hosted
+  // DATABASE_URL before deploying (see note in the response above).
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Project {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  name        String
+  category    String
+  tag         String   // "AI" | "Web" | "Mobile" | "Enterprise"
+  description String
+  image       String
+  video       String?
+  featured    Boolean  @default(false)
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Post {
+  id        String   @id @default(cuid())
+  slug      String   @unique
+  title     String
+  excerpt   String
+  category  String
+  readTime  String
+  image     String
+  content   String   // paragraphs joined by "\n\n"
+  published Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Role {
+  id        String   @id @default(cuid())
+  title     String
+  team      String
+  location  String
+  type      String   // "Full-time" | "Contract"
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ContactSubmission {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  company   String?
+  budget    String?
+  message   String
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
